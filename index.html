@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WALSCOM Technologies Services Limited</title>
+
+  <style>
+    :root{
+      --primary:#004b8d;
+      --secondary:#f9b233;
+      --dark:#0b1721;
+      --muted:#6b7280;
+      --border:#e5e7eb;
+      --bg:#ffffff;
+      --soft:#f9fafb;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.6;
+      color:#111827;
+      background:var(--bg);
+    }
+    a{color:inherit;text-decoration:none}
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:#ffffffcc;
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--border);
+    }
+    .nav{
+      max-width:1100px;
+      margin:auto;
+      padding:0.85rem 1rem;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+    }
+    .logo{
+      font-weight:900;
+      letter-spacing:0.04em;
+      color:var(--primary);
+      font-size:1.1rem;
+      white-space:nowrap;
+    }
+    .logo span{color:var(--secondary)}
+    nav ul{
+      list-style:none;
+      display:flex;
+      gap:1.1rem;
+      flex-wrap:wrap;
+      font-size:0.95rem;
+    }
+    nav a{
+      padding:0.15rem 0;
+      border-bottom:2px solid transparent;
+    }
+    nav a:hover{border-bottom-color:var(--secondary)}
+    .btn-wa{
+      padding:0.45rem 0.95rem;
+      border-radius:999px;
+      border:1px solid var(--secondary);
+      background:linear-gradient(to right,#fff7e6,#ffe5b3);
+      font-size:0.85rem;
+      font-weight:800;
+      white-space:nowrap;
+    }
+
+    main{max-width:1100px;margin:auto;padding:2rem 1rem 3rem}
+
+    /* IMPORTANT: makes anchor scroll land below sticky header */
+    section{scroll-margin-top:90px}
+
+    .hero{
+      display:grid;
+      grid-template-columns:1.2fr 0.9fr;
+      gap:1.4rem;
+      align-items:center;
+      padding:1rem 0 0.5rem;
+    }
+    .tag{
+      display:inline-block;
+      font-size:0.72rem;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin-bottom:0.65rem;
+    }
+    h1{
+      font-size:clamp(2rem,3vw,2.8rem);
+      line-height:1.15;
+      margin-bottom:0.75rem;
+      color:var(--dark);
+    }
+    h1 span{color:var(--primary)}
+    .lead{color:#4b5563;max-width:40rem}
+
+    .hero-actions{display:flex;gap:0.8rem;flex-wrap:wrap;margin-top:1.1rem}
+    .btn-primary{
+      background:linear-gradient(135deg,var(--primary),#002f5b);
+      color:#fff;
+      border:none;
+      padding:0.75rem 1.35rem;
+      border-radius:999px;
+      font-weight:900;
+      cursor:pointer;
+      display:inline-block;
+    }
+    .btn-outline{
+      border:1px solid #cbd5e1;
+      background:#fff;
+      padding:0.75rem 1.35rem;
+      border-radius:999px;
+      font-weight:900;
+      display:inline-block;
+    }
+
+    .hero-card{
+      border-radius:1.1rem;
+      padding:1.1rem;
+      background:radial-gradient(circle at top left,#003f7a 0,#001324 55%);
+      color:#e5e7eb;
+      position:relative;
+      overflow:hidden;
+      box-shadow:0 18px 45px rgba(0,0,0,0.25);
+      border:1px solid rgba(255,255,255,0.08);
+    }
+    .hero-card h2{
+      font-size:0.95rem;
+      letter-spacing:0.09em;
+      text-transform:uppercase;
+      color:#9fc5ff;
+      margin-bottom:0.55rem;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:0.7rem;
+      margin-top:0.7rem;
+      font-size:0.82rem;
+    }
+    .chip{
+      background:rgba(15,118,178,0.28);
+      border:1px solid rgba(148,204,255,0.20);
+      border-radius:0.85rem;
+      padding:0.55rem 0.6rem;
+    }
+    .chip strong{display:block;margin-bottom:0.1rem;color:#fff}
+
+    .section{
+      padding:2.3rem 0;
+      border-top:1px solid #eef2f7;
+      margin-top:1.8rem;
+    }
+    .badge{
+      font-size:0.72rem;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin-bottom:0.35rem;
+    }
+    .section h2{
+      font-size:1.5rem;
+      margin-bottom:0.5rem;
+      color:var(--dark);
+    }
+    .section p{color:#4b5563;max-width:52rem}
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:1rem;
+      margin-top:1.1rem;
+    }
+    .card{
+      border:1px solid var(--border);
+      border-radius:1rem;
+      padding:1rem;
+      background:#fff;
+      box-shadow:0 6px 16px rgba(15,23,42,0.04);
+    }
+    .card h3{margin-bottom:0.35rem;color:#111827;font-size:1.05rem}
+    .card p{font-size:0.9rem;color:#4b5563}
+    .pill{
+      display:inline-block;
+      margin-top:0.65rem;
+      font-size:0.75rem;
+      padding:0.15rem 0.55rem;
+      border-radius:999px;
+      background:#eff6ff;
+      color:#1d4ed8;
+      border:1px solid #dbeafe;
+    }
+
+    .dark-card{
+      background:#0b1220;
+      color:#e5e7eb;
+      border:1px solid rgba(255,255,255,0.08);
+      box-shadow:none;
+      position:relative;
+      overflow:hidden;
+    }
+    .dark-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:radial-gradient(circle at top left,rgba(59,130,246,.35),transparent 55%);
+      opacity:0.95;
+      pointer-events:none;
+    }
+    .dark-card *{position:relative;z-index:1}
+    .meta{font-size:0.8rem;color:#9ca3af;margin:.25rem 0 .4rem}
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:1fr 1.1fr;
+      gap:1rem;
+      margin-top:1.1rem;
+    }
+    .contact-box{
+      border:1px solid var(--border);
+      border-radius:1rem;
+      padding:1rem;
+      background:var(--soft);
+    }
+    label{display:block;font-size:0.85rem;color:#374151;margin-bottom:0.25rem}
+    input,textarea{
+      width:100%;
+      padding:0.6rem;
+      border-radius:0.6rem;
+      border:1px solid #d1d5db;
+      font-family:inherit;
+      margin-bottom:0.8rem;
+    }
+    textarea{min-height:120px;resize:vertical}
+    .send{
+      width:100%;
+      background:linear-gradient(135deg,var(--primary),#002f5b);
+      color:#fff;
+      border:none;
+      padding:0.75rem 1rem;
+      border-radius:999px;
+      font-weight:900;
+      cursor:pointer;
+    }
+
+    footer{
+      border-top:1px solid var(--border);
+      background:var(--soft);
+      padding:1.3rem 1rem;
+      font-size:0.85rem;
+      color:#6b7280;
+    }
+    .foot{
+      max-width:1100px;
+      margin:auto;
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:0.6rem;
+    }
+
+    @media(max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+      .btn-wa{display:none}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a class="logo" href="#top">WALSCOM<span>.</span></a>
+
+    <nav aria-label="Primary">
+      <ul>
+        <!-- THESE ANCHORS MATCH SECTION IDs BELOW -->
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#director">Director</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <a class="btn-wa" href="https://wa.me/2348037945050" target="_blank" rel="noopener">Chat on WhatsApp</a>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <div class="tag">Securing technologies • Building business</div>
+      <h1>Smart Security & Network<br>Solutions for <span>Modern Businesses</span>.</h1>
+      <p class="lead">
+        WALSCOM delivers professional CCTV, fibre optics, LAN/Wi-Fi, intercom, electric fence,
+        and cyber-aware configurations across Nigeria.
+      </p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#contact">Request a Site Visit</a>
+        <a class="btn-outline" href="#services">View Services</a>
+      </div>
+    </div>
+
+    <aside class="hero-card">
+      <h2>Typical Deployment</h2>
+      <p style="color:#d1d5db">Survey → BoQ → Installation → Testing → Training → Support</p>
+      <div class="hero-grid">
+        <div class="chip"><strong>CCTV</strong>IP/HD cameras, NVR, remote view.</div>
+        <div class="chip"><strong>Fibre & LAN</strong>Backbone, cabling, PoE switching.</div>
+        <div class="chip"><strong>Perimeter</strong>Electric fence, alarms, access.</div>
+        <div class="chip"><strong>Support</strong>Hardening, maintenance, training.</div>
+      </div>
+    </aside>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="badge">What we do</div>
+    <h2>Core Services</h2>
+    <p>End-to-end design, installation and support for security and network infrastructure.</p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>CCTV & Video Surveillance</h3>
+        <p>Camera placement, NVR/DVR setup, remote viewing, storage planning and training.</p>
+        <span class="pill">Cameras • NVR • Remote view</span>
+      </div>
+      <div class="card">
+        <h3>Fibre Optics & Structured Cabling</h3>
+        <p>Fibre backbone, splicing, termination, patch panels and long-distance links.</p>
+        <span class="pill">Backbone • Splicing • Termination</span>
+      </div>
+      <div class="card">
+        <h3>LAN, Wi-Fi & VLANs</h3>
+        <p>Routers, managed switches, VLAN segmentation and secure Wi-Fi distribution.</p>
+        <span class="pill">LAN • Wi-Fi • VLAN</span>
+      </div>
+      <div class="card">
+        <h3>Intercom & PBX Systems</h3>
+        <p>Extension mapping, cabling, programming and user documentation.</p>
+        <span class="pill">PBX • Intercom</span>
+      </div>
+      <div class="card">
+        <h3>Electric Fence & Perimeter Security</h3>
+        <p>Monitored electric fences, alarms and perimeter CCTV integration.</p>
+        <span class="pill">Perimeter • Deterrence</span>
+      </div>
+      <div class="card">
+        <h3>Cyber-Aware Configuration & Support</h3>
+        <p>Hardened device settings, safer remote access, periodic checks and documentation.</p>
+        <span class="pill">Secure setup • Support</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section" id="projects">
+    <div class="badge">Sample engagements</div>
+    <h2>Projects & Use Cases</h2>
+    <p>Every site is different. We plan for reliability and future expansion.</p>
+
+    <div class="grid">
+      <article class="card dark-card">
+        <h3>Hospital CCTV & Network Hardening</h3>
+        <div class="meta">Security • VLANs • Safer remote access</div>
+        <p style="color:#d1d5db">Coverage planning, segmented network, secure configuration and documentation.</p>
+      </article>
+
+      <article class="card dark-card">
+        <h3>School Multi-Block Surveillance</h3>
+        <div class="meta">Education • 3K Cameras • Structured cabling</div>
+        <p style="color:#d1d5db">Perimeter + corridor coverage, clean routing, rack setup and support.</p>
+      </article>
+
+      <article class="card dark-card">
+        <h3>Farm Perimeter Security</h3>
+        <div class="meta">Perimeter • Electric Fence • Solar options</div>
+        <p style="color:#d1d5db">Fence zoning, alarm integration, perimeter CCTV and power planning.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- GALLERY (no external images; placeholders only) -->
+  <section class="section" id="gallery">
+    <div class="badge">Proof of work</div>
+    <h2>Installation Gallery</h2>
+    <p>No photos yet? These are clean placeholders. Replace them later with real pictures.</p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>CCTV Installations</h3>
+        <p>Camera mounting • Neat cabling • Testing</p>
+        <span class="pill">Placeholder</span>
+      </div>
+      <div class="card">
+        <h3>Solar Security</h3>
+        <p>Off-grid CCTV • Reliable power planning</p>
+        <span class="pill">Placeholder</span>
+      </div>
+      <div class="card">
+        <h3>Fibre Optics</h3>
+        <p>Backbone • Splicing • Termination</p>
+        <span class="pill">Placeholder</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="badge">Who we are</div>
+    <h2>About WALSCOM</h2>
+    <p>
+      WALSCOM Technologies Services Limited delivers practical, neat and well-documented installations
+      for homes, hospitals, schools and organisations across Nigeria.
+    </p>
+  </section>
+
+  <!-- DIRECTOR -->
+  <section class="section" id="director">
+    <div class="badge">Leadership</div>
+    <h2>Meet the Director</h2>
+    <p>
+      <strong>Chris Agamunye</strong> — Technical Director. Hands-on leadership in CCTV, fibre optics,
+      LAN/Wi-Fi design, VLANs and site network hardening.
+    </p>
+  </section>
+
+  <!-- CONTACT (WhatsApp send works) -->
+  <section class="section" id="contact">
+    <div class="badge">Let’s talk</div>
+    <h2>Contact</h2>
+    <p>Fill the form and it will open WhatsApp with your message ready to send.</p>
+
+    <div class="contact-grid">
+      <div class="contact-box">
+        <p><strong>Phone/WhatsApp:</strong> +234 803 794 5050</p>
+        <p><strong>Email:</strong> info@walscom.com</p>
+        <p><strong>Location:</strong> Nigeria</p>
+      </div>
+
+      <div class="contact-box">
+        <form id="waForm">
+          <label for="name">Full Name</label>
+          <input id="name" required placeholder="Your name" />
+
+          <label for="phone">Phone</label>
+          <input id="phone" required placeholder="+234..." />
+
+          <label for="msg">Message</label>
+          <textarea id="msg" required placeholder="Describe your project..."></textarea>
+
+          <button class="send" type="submit">Send on WhatsApp</button>
+        </form>
+        <p style="margin-top:.6rem;color:var(--muted);font-size:.85rem">
+          Works without a backend because WhatsApp handles the sending.
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot">
+    <div>© <span id="year"></span> WALSCOM Technologies Services Limited</div>
+    <div>Security • Fibre • Solar • Networks</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  document.getElementById("waForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    const name = document.getElementById("name").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const msg = document.getElementById("msg").value.trim();
+
+    const waNumber = "2348037945050";
+    const text =
+      "Hello WALSCOM,%0A%0A" +
+      "Name: " + encodeURIComponent(name) + "%0A" +
+      "Phone: " + encodeURIComponent(phone) + "%0A" +
+      "Message: " + encodeURIComponent(msg);
+
+    window.open("https://wa.me/" + waNumber + "?text=" + text, "_blank");
+  });
+</script>
+
+</body>
+</html>
